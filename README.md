@@ -8,10 +8,14 @@ PORT used to access MySQL: 8000
 
 - Create the MySQL using the Dockerfile with the following command inside the mysql folder
 
+- Build image
+
 ```
 docker build -t mysql-server .
 ```
 
+- Run mysql server
+
 ```
-docker run -d -p 8000:3306 --name mysql -v database:/var/lib/mysql mysql-server
+docker compose up -d
 ```
