@@ -6,7 +6,7 @@ CREATE DATABASE IF NOT EXISTS english_school;
 -- Use the 'school' database
 USE english_school;
 
--- Create the 'student' table
+-- Create the 'people' table
 -- CREATE TABLE IF NOT EXISTS people (
 --     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 --     p_name VARCHAR(200) NOT NULL,
