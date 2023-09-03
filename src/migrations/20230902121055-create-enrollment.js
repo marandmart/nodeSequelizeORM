@@ -13,10 +13,21 @@ module.exports = {
         type: Sequelize.STRING
       },
       s_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'People',
+          references: 'id'
+        },
+        onUpdate: 'CASCADE'
       },
       class_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Classes',
+          references: 'id'
+        },
+
+        onUpdate: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

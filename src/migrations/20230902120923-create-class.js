@@ -10,13 +10,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       teacher_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'People',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE'
       },
       date_start: {
         type: Sequelize.DATEONLY
       },
       level_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Levels',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
