@@ -48,10 +48,15 @@ class PeopleController {
     const { id } = req.params;
     const updateInfo = req.body;
     try {
-      const updatePerson = await database.People.update(updateInfo, {
-        where: { id: Number(id) },
-      });
-      return res.status(200).json(updatePerson);
+      const { p_role, p_name, email, is_active } = updateInfo;
+      if (p_role || p_name || email || is_active) {
+        const updatePerson = await database.People.update(updateInfo, {
+          where: { id: Number(id) },
+        });
+        return res.status(200).json(updatePerson);
+      } else {
+        return res.status(400);
+      }
     } catch (error: any) {
       return res.status(500).json(error.message);
     }
