@@ -50,10 +50,13 @@ class PeopleController {
     try {
       const { p_role, p_name, email, is_active } = updateInfo;
       if (p_role || p_name || email || is_active) {
-        const updatePerson = await database.People.update(updateInfo, {
+        await database.People.update(updateInfo, {
           where: { id: Number(id) },
         });
-        return res.status(200).json(updatePerson);
+        const updatedPerson = await database.People.findOne({
+          where: { id: Number(id) },
+        });
+        return res.status(200).json(updatedPerson);
       } else {
         return res.status(400);
       }
@@ -65,10 +68,12 @@ class PeopleController {
   static async removePerson(req: express.Request, res: express.Response) {
     const { id } = req.params;
     try {
-      const deletedPerson = await database.People.destroy({
+      await database.People.destroy({
         where: { id: Number(id) },
       });
-      return res.status(200).json(deletedPerson);
+      return res
+        .status(200)
+        .json({ message: `Person with id ${id} successfully deleted` });
     } catch (error: any) {
       return res.status(500).json(error.message);
     }
