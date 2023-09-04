@@ -8,7 +8,7 @@
     "cw": "npx tsc --watch",
     "compile": "tsc && npm run copy-assets",
     "up-server": "docker-compose -f ./mysql/docker-compose.yml up -d",
-    "up-server-data": "docker-compose -f ./mysql/docker-compose.yml up -d && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "create-mock-data": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "down-server": "docker-compose -f ./mysql/docker-compose.yml down -v",
     "copy-assets": "copyfiles -u 1 \"src/**/*.{js,json}\" api"
   },
