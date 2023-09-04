@@ -18,7 +18,8 @@ module.exports = {
           model: 'People',
           references: 'id'
         },
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: "CASCADE"
       },
       class_id: {
         type: Sequelize.INTEGER,
@@ -26,8 +27,8 @@ module.exports = {
           model: 'Classes',
           references: 'id'
         },
-
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: "SET NULL"
       },
       createdAt: {
         allowNull: false,

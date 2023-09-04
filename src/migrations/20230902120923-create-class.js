@@ -15,7 +15,8 @@ module.exports = {
           model: 'People',
           key: 'id'
         },
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: "CASCADE"
       },
       date_start: {
         type: Sequelize.DATEONLY
@@ -26,7 +27,8 @@ module.exports = {
           model: 'Levels',
           key: 'id'
         },
-        onUpdate: 'CASCADE'
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
       },
       createdAt: {
         allowNull: false,
