@@ -14,6 +14,7 @@ module.exports = {
       },
       s_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'People',
           references: 'id'
@@ -23,12 +24,13 @@ module.exports = {
       },
       class_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Classes',
           references: 'id'
         },
         onUpdate: 'CASCADE',
-        onDelete: "SET NULL"
+        onDelete: "CASCADE"
       },
       createdAt: {
         allowNull: false,

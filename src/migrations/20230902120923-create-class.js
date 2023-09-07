@@ -11,6 +11,7 @@ module.exports = {
       },
       teacher_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'People',
           key: 'id'
@@ -23,12 +24,13 @@ module.exports = {
       },
       level_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Levels',
           key: 'id'
         },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

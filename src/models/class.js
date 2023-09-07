@@ -14,8 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       Class.hasMany(models.Enrollment, {
         foreignKey: "class_id"
       });
-      Class.belongsTo(models.People);
-      Class.belongsTo(models.Level);
+      Class.belongsTo(models.People, {
+        foreignKey: "teacher_id"
+      });
+      Class.belongsTo(models.Level, {
+        foreignKey: "level_id"
+      });
     }
   }
   Class.init({
