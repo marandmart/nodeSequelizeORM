@@ -7,7 +7,7 @@ class PeopleController {
       const allPeople = await database.People.findAll();
       return res.status(200).json(allPeople);
     } catch (error: any) {
-      return res.status(404).json(error.message);
+      return res.status(500).json(error.message);
     }
   }
 
