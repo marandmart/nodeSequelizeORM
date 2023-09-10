@@ -10,10 +10,6 @@ The objectives were:
 
 # Setup
 
-PORT used to access MySQL: 8000
-
-- Create a .env file to setup desired port for the node project
-
 - Create the MySQL server using the Dockerfile
 
 - Build docker image
