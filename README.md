@@ -1,14 +1,22 @@
 # Project details
 
-PORT used to access MySQL: 8000
+Project created to study SQL CRUD through an ORM using NodeJS and Sequelize library.
+The objectives were:
+
+- Creating a simple NodeJS API with express project applying MVC.
+- Creating a MySQL server through a docker image.
+- Understanding the basics of ORM.
+- Using sequelize to make CRUD operations.
 
 # Setup
+
+PORT used to access MySQL: 8000
 
 - Create a .env file to setup desired port for the node project
 
 - Create the MySQL server using the Dockerfile
 
-- Build image
+- Build docker image
 
 ```
 docker build -t mysql-server -f ./mysql/Dockerfile ./mysql
@@ -17,17 +25,17 @@ docker build -t mysql-server -f ./mysql/Dockerfile ./mysql
 - Run mysql server
 
 ```
-docker-compose -f ./mysql/docker-compose.yml up -d
+npm run/yarn up-server
 ```
 
-- Execute model migrations
+- Execute model migrations and create mock data
 
 ```
-npx sequelize-cli db:migrate
+npm run/yarn create-mock-data
 ```
 
-- Generate mock data
+- Start server
 
 ```
-npx sequelize-cli db:seed:all
+npm run/yarn start
 ```
