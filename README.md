@@ -31,6 +31,12 @@ npm run/yarn up-server
 npm run/yarn create-mock-data
 ```
 
+- Compile typescript files and copy .js sequelize files to output directory
+
+```
+npm run/yarn compile
+```
+
 - Start server
 
 ```
