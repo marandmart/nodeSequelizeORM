@@ -7,7 +7,7 @@ The project objectives were:
 - Create a simple NodeJS API with express project applying MVC.
 - Create a MySQL server through a dockerfile.
 - Understand the basics of ORM.
-- Using sequelize to make CRUD operations.
+- Use sequelize to make CRUD operations.
 
 # Setup
 
