@@ -8,6 +8,7 @@ The project objectives were:
 - Create a MySQL server through a dockerfile.
 - Understand the basics of ORM.
 - Use sequelize to make CRUD operations.
+- Understand how to structure these types of projects.
 
 # Setup
 
