@@ -1,79 +1,33 @@
-const database = require("../models");
 import express from "express";
 
-class LevelController {
-  static async getAll(_: express.Request, res: express.Response) {
-    try {
-      const allLevels = await database.Level.findAll();
-      res.status(200).json(allLevels);
-    } catch (error: any) {
-      res.status(500).json(error.message);
-    }
+import Controller from "./Controller.js";
+import LevelServices from "../services/LevelServices.js";
+
+const levelServices = new LevelServices();
+
+class LevelController extends Controller {
+  constructor() {
+    super(levelServices);
   }
 
-  static async getLevel(req: express.Request, res: express.Response) {
-    const { id } = req.params;
-    try {
-      const level = await database.Level.findOne({ where: { id: Number(id) } });
-      if (level) return res.status(200).json(level);
-      else return res.status(204);
-    } catch (error: any) {
-      res.status(500).json(error.message);
-    }
-  }
-
-  static async addLevel(req: express.Request, res: express.Response) {
+  addLevel(req: express.Request, res: express.Response) {
     const { description } = req.body;
-    try {
-      if (description) {
-        const newLevel = await database.Level.create({
-          description,
-        });
-        return res.status(200).json(newLevel);
-      } else {
-        return res.status(400);
-      }
-    } catch (error: any) {
-      res.status(500).json(error.message);
+
+    if (description) {
+      super.add(req, res);
+    } else {
+      return res.sendStatus(400);
     }
   }
 
-  static async updateLevel(req: express.Request, res: express.Response) {
+  updateLevel(req: express.Request, res: express.Response) {
     const { id } = req.params;
-    const updateInfo = req.body;
-    const { description } = updateInfo;
-    try {
-      if (description) {
-        await database.Level.update(updateInfo, {
-          where: { id: Number(id) },
-        });
-        const updatedLevel = await database.Level.findOne({
-          where: { id: Number(id) },
-        });
-        return res.status(200).json(updatedLevel);
-      } else {
-        return res.status(400);
-      }
-    } catch (error: any) {
-      return res.status(500).json(error.message);
-    }
-  }
+    const { description } = req.body;
 
-  static async deleteLevel(req: express.Request, res: express.Response) {
-    const { id } = req.params;
-    try {
-      if (id) {
-        await database.Level.destroy({
-          where: { id: Number(id) },
-        });
-        return res
-          .status(200)
-          .json({ message: `Level with id ${id} successfully deleted` });
-      } else {
-        return res.status(400);
-      }
-    } catch (error: any) {
-      return res.status(500).json(error.message);
+    if (description && id) {
+      super.update(req, res);
+    } else {
+      return res.status(400);
     }
   }
 }
