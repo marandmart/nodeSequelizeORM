@@ -21,7 +21,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   People.init({
     p_name: DataTypes.STRING,
-    is_active: DataTypes.BOOLEAN,
+    is_active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
     email: DataTypes.STRING,
     p_role: DataTypes.STRING
   }, {

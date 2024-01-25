@@ -1,12 +1,14 @@
 import { Router } from "express";
 import ClassController from "../controllers/ClassController.js";
 
+const classController = new ClassController();
+
 const router = Router();
 
-router.get("/classes/:id", ClassController.getClass);
-router.get("/classes", ClassController.getAll);
-router.post("/classes", ClassController.addClass);
-router.put("/classes/:id", ClassController.updateClass);
-router.delete("/classes/:id", ClassController.deleteClass);
+router.get("/classes/:id", (req, res) => classController.getOne(req, res));
+router.get("/classes", (req, res) => classController.getAll(req, res));
+router.post("/classes", (req, res) => classController.addClass(req, res));
+router.put("/classes/:id", (req, res) => classController.updateClass(req, res));
+router.delete("/classes/:id", (req, res) => classController.remove(req, res));
 
 export default router;
