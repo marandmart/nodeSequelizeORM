@@ -17,11 +17,19 @@ class Controller {
   }
 
   async getOne(req: express.Request, res: express.Response) {
-    const { id } = req.params;
+    let whereBody: {
+      [key: string]: number;
+    } = {};
+    Object.keys(req.params).forEach((key) => {
+      whereBody[key] = Number(req.params[key]);
+    });
     try {
-      const listing = await this.service.getOne(id);
-      if (listing) return res.status(200).json(listing);
-      else return res.status(204);
+      const listing = await this.service.getOne(whereBody);
+      if (listing) {
+        return res.status(200).json(listing);
+      } else {
+        return res.sendStatus(204);
+      }
     } catch (error: any) {
       return res.status(500).json(error.message);
     }
@@ -38,10 +46,16 @@ class Controller {
   }
 
   async update(req: express.Request, res: express.Response) {
-    const { id } = req.params;
+    const whereParams: { [key: string]: number } = {};
+
+    Object.keys(req.params).forEach((key) => {
+      whereParams[key] = Number(req.params[key]);
+    });
+
     const newData = { updatedAt: new Date().toISOString(), ...req.body };
+
     try {
-      await this.service.update(id, newData);
+      await this.service.update(whereParams, newData);
       return res.status(200).json({ message: "Data updated" });
     } catch (error: any) {
       return res.status(500).json(error.message);
@@ -49,27 +63,16 @@ class Controller {
   }
 
   async remove(req: express.Request, res: express.Response) {
-    const { id } = req.params;
-    try {
-      await this.service.remove(id);
-      return res
-        .status(200)
-        .json({ message: `Data with id ${id} successfully deleted` });
-    } catch (error: any) {
-      return res.status(500).json(error.message);
-    }
-  }
-
-  async findByIds(req: express.Request, res: express.Response) {
     let whereBody: {
       [key: string]: number;
     } = {};
+
     try {
       Object.keys(req.params).forEach((key) => {
         whereBody[key] = Number(req.params[key]);
       });
-      const foundData = this.service.findByIds(whereBody);
-      return res.status(200).json(foundData);
+      await this.service.remove(whereBody);
+      return res.status(200).json({ message: "Data successfully deleted" });
     } catch (error: any) {
       return res.status(500).json(error.message);
     }

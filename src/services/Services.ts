@@ -10,9 +10,9 @@ class Services {
     return dataSource[this.model].findAll();
   }
 
-  async getOne(id: string) {
+  async getOne(params: object) {
     return dataSource[this.model].findOne({
-      where: { id: Number(id) },
+      where: params,
     });
   }
 
@@ -20,14 +20,14 @@ class Services {
     return dataSource[this.model].create(data);
   }
 
-  async update(id: string, data: object) {
+  async update(params: object, data: object) {
     dataSource[this.model].update(data, {
-      where: { id: Number(id) },
+      where: params,
     });
   }
 
-  async remove(id: string) {
-    dataSource[this.model].destroy({ where: { id: Number(id) } });
+  async remove(params: object) {
+    dataSource[this.model].destroy({ where: params });
   }
 
   async findByIds(params: object) {

@@ -1,6 +1,4 @@
-const database = require("../models");
 import express from "express";
-
 import Controller from "./Controller";
 import ClassServices from "../services/ClassServices.js";
 
