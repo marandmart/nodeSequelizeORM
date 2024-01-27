@@ -39,7 +39,15 @@ module.exports = {
       class_id: 2,
       createdAt: new Date(),
       updatedAt: new Date()
-    }], {});
+    },
+    {
+      curr_status: "confirmed",
+      s_id: 1,
+      class_id: 3,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+    ], {});
   },
 
   async down(queryInterface, Sequelize) {

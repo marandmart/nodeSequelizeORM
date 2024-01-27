@@ -29,6 +29,10 @@ class PeopleController extends Controller {
     }
   }
 
+  getEnrollments(req: express.Request, res: express.Response) {
+    enrollmentController.getEnrollments(req, res);
+  }
+
   getEnrollemnt(req: express.Request, res: express.Response) {
     enrollmentController.getEnrollment(req, res);
   }

@@ -1,7 +1,9 @@
 import express from "express";
 import EnrollmentServices from "../services/EnrollmentServices.js";
 import Controller from "./Controller.js";
+import PeopleServices from "../services/PeopleServices.js";
 
+const peopleServices = new PeopleServices();
 const enrollmentServices = new EnrollmentServices();
 
 class EnrollmentController extends Controller {
@@ -16,6 +18,22 @@ class EnrollmentController extends Controller {
       super.getOne(req, res);
     } else {
       return res.sendStatus(400);
+    }
+  }
+
+  async getEnrollments(req: express.Request, res: express.Response) {
+    const { s_id } = req.params;
+    try {
+      if (s_id) {
+        const student = await peopleServices.getOne({ id: Number(s_id) });
+        // Enrollments retrieved using mixing defined in models/people, as enrolled
+        const enrollments = await student.getEnrolled();
+        return res.status(200).json(enrollments);
+      } else {
+        return res.sendStatus(400);
+      }
+    } catch (error: any) {
+      return res.status(500).json(error.message);
     }
   }
 
