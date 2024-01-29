@@ -2,9 +2,9 @@
   "name": "nodesequelizemysql",
   "version": "1.0.0",
   "description": "Project created to learn application of nodeJS alongside ORM tool sequelize and a mysql database",
-  "main": "./api/index.js",
+  "main": "./server.js",
   "scripts": {
-    "start": "nodemon ./api/index.js",
+    "start": "nodemon ./server.js",
     "cw": "npx tsc --watch",
     "compile": "tsc && npm run copy-assets",
     "up-server": "docker-compose -f ./mysql/docker-compose.yml up -d",

@@ -12,19 +12,19 @@ router.put("/people/:id", (req, res) =>
   peopleController.updatePerson(req, res)
 );
 router.delete("/people/:id", (req, res) => peopleController.remove(req, res));
-router.get("/people/:s_id/enrollment/:id", (req, res) =>
+router.get("/people/:s_id/enrollments/:id", (req, res) =>
   peopleController.getEnrollemnt(req, res)
 );
-router.get("/people/:s_id/enrollment", (req, res) =>
+router.get("/people/:s_id/enrollments", (req, res) =>
   peopleController.getEnrollments(req, res)
 );
-router.post("/people/:s_id/enrollment", (req, res) =>
+router.post("/people/:s_id/enrollments", (req, res) =>
   peopleController.enroll(req, res)
 );
-router.put("/people/:s_id/enrollment/:id", (req, res) =>
+router.put("/people/:s_id/enrollments/:id", (req, res) =>
   peopleController.updateEnrollment(req, res)
 );
-router.delete("/people/:s_id/enrollment/:id", (req, res) =>
+router.delete("/people/:s_id/enrollments/:id", (req, res) =>
   peopleController.unenroll(req, res)
 );
 
