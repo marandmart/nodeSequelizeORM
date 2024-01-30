@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon ./server.js",
     "cw": "npx tsc --watch",
-    "compile": "tsc && npm run copy-assets",
+    "compile": "rm -r api && tsc && npm run copy-assets",
     "up-server": "docker-compose -f ./mysql/docker-compose.yml up -d",
     "create-mock-data": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "down-server": "docker-compose -f ./mysql/docker-compose.yml down -v",

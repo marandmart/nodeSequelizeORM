@@ -5,8 +5,11 @@ const router = Router();
 
 const peopleController = new PeopleController();
 
-router.get("/people/:id", (req, res) => peopleController.getOne(req, res));
 router.get("/people", (req, res) => peopleController.getAll(req, res));
+router.get("/people/all", (req, res) =>
+  peopleController.getAllWithoutConstraints(req, res)
+);
+router.get("/people/:id", (req, res) => peopleController.getOne(req, res));
 router.post("/people", (req, res) => peopleController.addPerson(req, res));
 router.put("/people/:id", (req, res) =>
   peopleController.updatePerson(req, res)

@@ -55,8 +55,11 @@ class Controller {
     const newData = { updatedAt: new Date().toISOString(), ...req.body };
 
     try {
-      await this.service.update(whereParams, newData);
-      return res.status(200).json({ message: "Data updated" });
+      const updated = await this.service.update(whereParams, newData);
+      if (!updated) {
+        return res.status(400).json({ message: "Registry wasn't updated." });
+      }
+      return res.status(200).json({ message: "Data updated." });
     } catch (error: any) {
       return res.status(500).json(error.message);
     }

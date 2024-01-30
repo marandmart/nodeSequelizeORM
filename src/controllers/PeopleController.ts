@@ -29,6 +29,15 @@ class PeopleController extends Controller {
     }
   }
 
+  async getAllWithoutConstraints(req: express.Request, res: express.Response) {
+    try {
+      const everyone = await peopleServices.getAllWithoutRestriction();
+      return res.status(200).json(everyone);
+    } catch (error: any) {
+      return res.status(500).json(error.message);
+    }
+  }
+
   getEnrollments(req: express.Request, res: express.Response) {
     enrollmentController.getEnrollments(req, res);
   }

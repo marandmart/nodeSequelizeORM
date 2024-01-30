@@ -21,17 +21,25 @@ class Services {
   }
 
   async update(params: object, data: object) {
-    dataSource[this.model].update(data, {
+    const updatedRegistry = await dataSource[this.model].update(data, {
       where: params,
     });
+    if (updatedRegistry[0] === 0) {
+      return false;
+    }
+    return true;
   }
 
   async remove(params: object) {
-    dataSource[this.model].destroy({ where: params });
+    return dataSource[this.model].destroy({ where: params });
   }
 
   async findByIds(params: object) {
     return dataSource[this.model].findOne({ where: params });
+  }
+
+  async getRegistryByScope(scope: string) {
+    return dataSource[this.model].scope(scope).findAll();
   }
 }
 
