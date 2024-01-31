@@ -4,7 +4,6 @@ import PeopleServices from "../services/PeopleServices.js";
 import EnrollmentController from "./EnrollmentController.js";
 
 const peopleServices = new PeopleServices();
-const enrollmentController = new EnrollmentController();
 
 class PeopleController extends Controller {
   constructor() {
@@ -36,26 +35,6 @@ class PeopleController extends Controller {
     } catch (error: any) {
       return res.status(500).json(error.message);
     }
-  }
-
-  getEnrollments(req: express.Request, res: express.Response) {
-    enrollmentController.getEnrollments(req, res);
-  }
-
-  getEnrollemnt(req: express.Request, res: express.Response) {
-    enrollmentController.getEnrollment(req, res);
-  }
-
-  enroll(req: express.Request, res: express.Response) {
-    enrollmentController.enroll(req, res);
-  }
-
-  updateEnrollment(req: express.Request, res: express.Response) {
-    enrollmentController.updateEnrollment(req, res);
-  }
-
-  unenroll(req: express.Request, res: express.Response) {
-    enrollmentController.remove(req, res);
   }
 }
 

@@ -13,7 +13,6 @@ class EnrollmentController extends Controller {
 
   getEnrollment(req: express.Request, res: express.Response) {
     const { s_id, id } = req.params;
-
     if (s_id && id) {
       super.getOne(req, res);
     } else {
@@ -31,6 +30,20 @@ class EnrollmentController extends Controller {
         return res.status(200).json(enrollments);
       } else {
         return res.sendStatus(400);
+      }
+    } catch (error: any) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  async getEveryEnrollment(req: express.Request, res: express.Response) {
+    const { s_id } = req.params;
+    try {
+      if (s_id) {
+        const student = await peopleServices.getOne({ id: Number(s_id) });
+        // Using the same idea of scope as the one above
+        const allEnrollments = await student.getAllEnrollments();
+        return res.status(200).json(allEnrollments);
       }
     } catch (error: any) {
       return res.status(500).json(error.message);

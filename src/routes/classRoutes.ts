@@ -5,7 +5,7 @@ const classController = new ClassController();
 
 const router = Router();
 
-router.get("/classes/:id", (req, res) => classController.getOne(req, res));
+router.get("/classes/:id", (req, res) => classController.getOneById(req, res));
 router.get("/classes", (req, res) => classController.getAll(req, res));
 router.post("/classes", (req, res) => classController.addClass(req, res));
 router.put("/classes/:id", (req, res) => classController.updateClass(req, res));

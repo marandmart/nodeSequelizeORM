@@ -1,5 +1,6 @@
 import express from "express";
 import Services from "../services/Services.js";
+import idStringConverter from "../utils/idStringConverter.js";
 
 class Controller {
   service: Services;
@@ -16,15 +17,22 @@ class Controller {
     }
   }
 
-  async getOne(req: express.Request, res: express.Response) {
-    let whereBody: {
-      [key: string]: number;
-    } = {};
-    Object.keys(req.params).forEach((key) => {
-      whereBody[key] = Number(req.params[key]);
-    });
+  async getOneById(req: express.Request, res: express.Response) {
+    const { id } = req.params;
     try {
-      const listing = await this.service.getOne(whereBody);
+      const listing = await this.service.getOneByPk(Number(id));
+      return res.status(200).json(listing);
+    } catch (error: any) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  async getOne(req: express.Request, res: express.Response) {
+    const { ...params } = req.params;
+    const verifiedParams = idStringConverter(params);
+
+    try {
+      const listing = await this.service.getOne(verifiedParams);
       if (listing) {
         return res.status(200).json(listing);
       } else {
@@ -46,16 +54,12 @@ class Controller {
   }
 
   async update(req: express.Request, res: express.Response) {
-    const whereParams: { [key: string]: number } = {};
-
-    Object.keys(req.params).forEach((key) => {
-      whereParams[key] = Number(req.params[key]);
-    });
-
+    const { ...params } = req.params;
+    const verifiedParams = idStringConverter(params);
     const newData = { updatedAt: new Date().toISOString(), ...req.body };
 
     try {
-      const updated = await this.service.update(whereParams, newData);
+      const updated = await this.service.update(verifiedParams, newData);
       if (!updated) {
         return res.status(400).json({ message: "Registry wasn't updated." });
       }
@@ -66,15 +70,10 @@ class Controller {
   }
 
   async remove(req: express.Request, res: express.Response) {
-    let whereBody: {
-      [key: string]: number;
-    } = {};
-
+    const { ...params } = req.params;
+    const verifiedParams = idStringConverter(params);
     try {
-      Object.keys(req.params).forEach((key) => {
-        whereBody[key] = Number(req.params[key]);
-      });
-      await this.service.remove(whereBody);
+      await this.service.remove(verifiedParams);
       return res.status(200).json({ message: "Data successfully deleted" });
     } catch (error: any) {
       return res.status(500).json(error.message);

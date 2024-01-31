@@ -10,6 +10,10 @@ class Services {
     return dataSource[this.model].findAll();
   }
 
+  async getOneByPk(id: number) {
+    return dataSource[this.model].findByPk(id);
+  }
+
   async getOne(params: object) {
     return dataSource[this.model].findOne({
       where: params,
@@ -32,10 +36,6 @@ class Services {
 
   async remove(params: object) {
     return dataSource[this.model].destroy({ where: params });
-  }
-
-  async findByIds(params: object) {
-    return dataSource[this.model].findOne({ where: params });
   }
 
   async getRegistryByScope(scope: string) {

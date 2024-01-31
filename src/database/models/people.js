@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         scope: { curr_status: "confirmed" },
         as: "enrolled"
       });
+      People.hasMany(models.Enrollment, {
+        foreignKey: "s_id",
+        as: "allEnrollments"
+      });
       People.hasMany(models.Class, {
         foreignKey: "teacher_id"
       });
@@ -62,6 +66,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'People',
     paranoid: true,
+    // by defaut, if user is not active
+      // they wont return in the regular get request
     defaultScope: {
       where: {
         is_active: true
