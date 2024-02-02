@@ -16,7 +16,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      date_start: "2020-02-01",
+      date_start: "2022-02-01",
       level_id: 3,
       teacher_id: 6,
       createdAt: new Date(),
@@ -27,7 +27,14 @@ module.exports = {
       teacher_id: 6,
       createdAt: new Date(),
       updatedAt: new Date()
-    }], {});
+    }, {
+      date_start: "2019-07-01",
+      level_id: 3,
+      teacher_id: 5,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+    ], {});
   },
 
   async down(queryInterface, Sequelize) {

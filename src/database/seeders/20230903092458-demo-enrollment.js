@@ -23,6 +23,12 @@ module.exports = {
       updatedAt: new Date()
     }, {
       curr_status: "confirmed",
+      s_id: 3,
+      class_id: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      curr_status: "confirmed",
       s_id: 4,
       class_id: 3,
       createdAt: new Date(),

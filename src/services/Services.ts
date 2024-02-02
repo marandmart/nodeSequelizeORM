@@ -6,8 +6,8 @@ class Services {
     this.model = modelName;
   }
 
-  async getAll() {
-    return dataSource[this.model].findAll();
+  async getAll(where: object | null = {}) {
+    return dataSource[this.model].findAll({ where: { ...where } });
   }
 
   async getOneByPk(id: number) {
@@ -17,6 +17,12 @@ class Services {
   async getOne(params: object) {
     return dataSource[this.model].findOne({
       where: params,
+    });
+  }
+
+  async getAndCount(params: object) {
+    return dataSource[this.model].findAndCountAll({
+      ...params,
     });
   }
 

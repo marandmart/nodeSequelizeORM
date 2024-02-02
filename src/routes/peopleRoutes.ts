@@ -23,6 +23,12 @@ router.get("/people/:s_id/enrollments", (req, res) =>
 router.get("/people/:s_id/enrollments/all", (req, res) =>
   enrollmentController.getEveryEnrollment(req, res)
 );
+router.get("/people/:s_id/enrollments/count", (req, res) =>
+  enrollmentController.getEnrollmentCount(req, res)
+);
+router.get("/people/enrollments/full", (req, res) =>
+  enrollmentController.getEnrollmentsFull(req, res)
+);
 router.get("/people/:s_id/enrollments/:id", (req, res) =>
   enrollmentController.getEnrollment(req, res)
 );
