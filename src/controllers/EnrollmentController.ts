@@ -12,10 +12,10 @@ class EnrollmentController extends Controller {
     super(enrollmentServices);
   }
 
-  getEnrollment(req: express.Request, res: express.Response) {
+  async getEnrollment(req: express.Request, res: express.Response) {
     const { s_id, id } = req.params;
     if (s_id && id) {
-      super.getOne(req, res);
+      await super.getOne(req, res);
     } else {
       return res.sendStatus(400);
     }
@@ -27,13 +27,17 @@ class EnrollmentController extends Controller {
       if (s_id) {
         const student = await peopleServices.getOne({ id: Number(s_id) });
         // Enrollments retrieved using mixing defined in models/people, as enrolled
-        const enrollments = await student.getEnrolled();
-        return res.status(200).json(enrollments);
+        if (student) {
+          const enrollments = await student.getEnrolled();
+          return res.status(200).json(enrollments);
+        } else {
+          return res.sendStatus(204);
+        }
       } else {
         return res.sendStatus(400);
       }
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -65,7 +69,11 @@ class EnrollmentController extends Controller {
         group: ["class_id"],
         having: Sequelize.literal(`count(class_id) > ${FULL_AMOUNT}`),
       });
-      return res.status(200).json(coursesFull.count);
+      if (coursesFull.count.length > 0) {
+        return res.status(200).json(coursesFull.count);
+      } else {
+        return res.status(200).json({ message: "No classes are full" });
+      }
     } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
@@ -81,11 +89,11 @@ class EnrollmentController extends Controller {
         return res.status(200).json(allEnrollments);
       }
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 
-  enroll(req: express.Request, res: express.Response) {
+  async enroll(req: express.Request, res: express.Response) {
     const { s_id } = req.params;
     const { curr_status = "enrolled", class_id } = req.body;
 
@@ -93,17 +101,17 @@ class EnrollmentController extends Controller {
       req.body["s_id"] = Number(s_id);
       req.body["curr_status"] = curr_status;
       req.body["class_id"] = class_id;
-      super.add(req, res);
+      await super.add(req, res);
     } else {
       return res.sendStatus(400);
     }
   }
 
-  updateEnrollment(req: express.Request, res: express.Response) {
+  async updateEnrollment(req: express.Request, res: express.Response) {
     const { curr_status, class_id } = req.body;
 
     if (curr_status || class_id) {
-      super.update(req, res);
+      await super.update(req, res);
     } else {
       return res.sendStatus(400);
     }

@@ -9,22 +9,22 @@ class LevelController extends Controller {
     super(levelServices);
   }
 
-  addLevel(req: express.Request, res: express.Response) {
+  async addLevel(req: express.Request, res: express.Response) {
     const { description } = req.body;
 
     if (description) {
-      super.add(req, res);
+      await super.add(req, res);
     } else {
       return res.sendStatus(400);
     }
   }
 
-  updateLevel(req: express.Request, res: express.Response) {
+  async updateLevel(req: express.Request, res: express.Response) {
     const { id } = req.params;
     const { description } = req.body;
 
     if (description && id) {
-      super.update(req, res);
+      await super.update(req, res);
     } else {
       return res.status(400);
     }

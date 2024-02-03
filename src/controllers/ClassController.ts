@@ -43,19 +43,19 @@ class ClassController extends Controller {
     }
   }
 
-  addClass(req: express.Request, res: express.Response) {
+  async addClass(req: express.Request, res: express.Response) {
     const { teacher_id, level_id } = req.body;
     if (teacher_id && level_id) {
-      super.add(req, res);
+      await super.add(req, res);
     } else {
       return res.sendStatus(400);
     }
   }
 
-  updateClass(req: express.Request, res: express.Response) {
+  async updateClass(req: express.Request, res: express.Response) {
     const { teacher_id, level_id, date_start } = req.body;
     if (teacher_id || level_id || date_start) {
-      super.update(req, res);
+      await super.update(req, res);
     } else {
       return res.sendStatus(400);
     }

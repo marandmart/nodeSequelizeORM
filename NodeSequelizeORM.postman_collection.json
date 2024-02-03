@@ -1,0 +1,572 @@
+{
+	"info": {
+		"_postman_id": "888fd415-f8ca-44d7-816f-fc3785e8b020",
+		"name": "NodeJSORM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22629590"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/people",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/all",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"p_name\": \"Fulano Fulano\",\n    \"cpf\": \"98798798798\",\n    \"email\": \"fulano@fulano.com\",\n    \"p_role\": \"docente\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/people/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"p_name\": \"Felicia Hardy\",\n    \"email\": \"felicia@cat.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/people/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/7",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/8",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/1/enrollments/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/1/enrollments/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"1",
+						"enrollments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/1/enrollments/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/1/enrollments/all",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"1",
+						"enrollments",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/1/enrollments/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/1/enrollments/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"1",
+						"enrollments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/1/enrollments/count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/1/enrollments/count",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"1",
+						"enrollments",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/3/enrollments/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"class_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/people/3/enrollments/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"3",
+						"enrollments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/1/cancel",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/1/cancel",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"1",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/11/enrollments/7",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"curr_status\": \"confirmed\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/people/11/enrollments/7",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"11",
+						"enrollments",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/11/enrollments/7",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/11/enrollments/7",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"11",
+						"enrollments",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/people/enrollments/full",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/people/enrollments/full",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"people",
+						"enrollments",
+						"full"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/classes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/classes",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/classes?start_date=2020-01-01&end_date=2020-12-30",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/classes?start_date=2020-01-01&end_date=2020-12-30",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"classes"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2020-12-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/classes/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/classes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"classes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/classes/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"teacher_id\": 5,\n    \"date_start\": \"2022-02-01\",\n    \"level_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/classes/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"classes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/classes/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date_start\": \"2019-02-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/classes/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"classes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/classes/5",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/classes/5",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"classes",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/levels/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/levels/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"levels",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/levels/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/levels/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"levels",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/levels/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"very hard\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/levels/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"levels",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/levels/4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/levels/4",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"levels",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,7 +1,6 @@
 import express from "express";
 import Controller from "./Controller.js";
 import PeopleServices from "../services/PeopleServices.js";
-import EnrollmentController from "./EnrollmentController.js";
 
 const peopleServices = new PeopleServices();
 
@@ -10,19 +9,19 @@ class PeopleController extends Controller {
     super(peopleServices);
   }
 
-  addPerson(req: express.Request, res: express.Response) {
+  async addPerson(req: express.Request, res: express.Response) {
     const { p_name, email, p_role } = req.body;
     if (p_name && email && p_role) {
-      super.add(req, res);
+      await super.add(req, res);
     } else {
       return res.sendStatus(400);
     }
   }
 
-  updatePerson(req: express.Request, res: express.Response) {
+  async updatePerson(req: express.Request, res: express.Response) {
     const { p_role, p_name, email, is_active } = req.body;
     if (p_role || p_name || email || typeof is_active === "boolean") {
-      super.update(req, res);
+      await super.update(req, res);
     } else {
       return res.sendStatus(400);
     }
@@ -33,7 +32,7 @@ class PeopleController extends Controller {
 
     try {
       const person = await peopleServices.getOneByPk(Number(id));
-      const isStudent = person.p_role === "estudante";
+      const isStudent = person.p_role === "student";
       if (isStudent) {
         await peopleServices.cancelStudentAndEnrollments(Number(id));
         return res
@@ -55,7 +54,7 @@ class PeopleController extends Controller {
       const everyone = await peopleServices.getAllWithoutRestriction();
       return res.status(200).json(everyone);
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 }

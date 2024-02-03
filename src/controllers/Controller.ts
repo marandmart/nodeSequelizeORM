@@ -13,7 +13,7 @@ class Controller {
       const listings = await this.service.getAll();
       return res.status(200).json(listings);
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -23,7 +23,7 @@ class Controller {
       const listing = await this.service.getOneByPk(Number(id));
       return res.status(200).json(listing);
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -39,7 +39,7 @@ class Controller {
         return res.sendStatus(204);
       }
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -49,7 +49,7 @@ class Controller {
       const newEntry = await this.service.add(data);
       return res.status(200).json(newEntry);
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -67,7 +67,7 @@ class Controller {
       }
       return res.status(200).json({ message: "Data updated." });
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 
@@ -78,7 +78,7 @@ class Controller {
       await this.service.remove(verifiedParams);
       return res.status(200).json({ message: "Data successfully deleted" });
     } catch (error: any) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({ error: error.message });
     }
   }
 }
