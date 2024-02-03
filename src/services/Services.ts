@@ -30,10 +30,8 @@ class Services {
     return dataSource[this.model].create(data);
   }
 
-  async update(params: object, data: object) {
-    const updatedRegistry = await dataSource[this.model].update(data, {
-      where: params,
-    });
+  async update(data: object, options: object) {
+    const updatedRegistry = await dataSource[this.model].update(data, options);
     if (updatedRegistry[0] === 0) {
       return false;
     }

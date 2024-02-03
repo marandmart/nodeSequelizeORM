@@ -28,6 +28,28 @@ class PeopleController extends Controller {
     }
   }
 
+  async cancelStudentEnrollments(req: express.Request, res: express.Response) {
+    const { id } = req.params;
+
+    try {
+      const person = await peopleServices.getOneByPk(Number(id));
+      const isStudent = person.p_role === "estudante";
+      if (isStudent) {
+        await peopleServices.cancelStudentAndEnrollments(Number(id));
+        return res
+          .status(200)
+          .json({ message: `Enrollments from student with ${id} removed` });
+      } else {
+        return res
+          .status(406)
+          .json({ message: "Can't remove classes from non student roles." });
+      }
+      // await peopleServices.cancelStudentEnrollment(Number(id))
+    } catch (error: any) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+
   async getAllWithoutConstraints(req: express.Request, res: express.Response) {
     try {
       const everyone = await peopleServices.getAllWithoutRestriction();

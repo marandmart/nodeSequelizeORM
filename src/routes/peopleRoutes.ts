@@ -16,6 +16,9 @@ router.post("/people", (req, res) => peopleController.addPerson(req, res));
 router.put("/people/:id", (req, res) =>
   peopleController.updatePerson(req, res)
 );
+router.put("/people/:id/cancel", (req, res) =>
+  peopleController.cancelStudentEnrollments(req, res)
+);
 router.delete("/people/:id", (req, res) => peopleController.remove(req, res));
 router.get("/people/:s_id/enrollments", (req, res) =>
   enrollmentController.getEnrollments(req, res)

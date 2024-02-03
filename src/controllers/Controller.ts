@@ -59,7 +59,9 @@ class Controller {
     const newData = { updatedAt: new Date().toISOString(), ...req.body };
 
     try {
-      const updated = await this.service.update(verifiedParams, newData);
+      const updated = await this.service.update(newData, {
+        where: verifiedParams,
+      });
       if (!updated) {
         return res.status(400).json({ message: "Registry wasn't updated." });
       }
