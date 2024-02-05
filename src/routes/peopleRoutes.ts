@@ -9,7 +9,7 @@ const enrollmentController = new EnrollmentController();
 
 router.get("/people", (req, res) => peopleController.getAll(req, res));
 router.get("/people/all", (req, res) =>
-  peopleController.getAllWithoutConstraints(req, res)
+  peopleController.getAllStudentsIncludingDeletedOrInactive(req, res)
 );
 router.get("/people/:id", (req, res) => peopleController.getOneById(req, res));
 router.post("/people", (req, res) => peopleController.addPerson(req, res));
@@ -17,20 +17,20 @@ router.put("/people/:id", (req, res) =>
   peopleController.updatePerson(req, res)
 );
 router.put("/people/:id/cancel", (req, res) =>
-  peopleController.cancelStudentEnrollments(req, res)
+  peopleController.cancelStudentAndEnrollments(req, res)
 );
 router.delete("/people/:id", (req, res) => peopleController.remove(req, res));
 router.get("/people/:s_id/enrollments", (req, res) =>
   enrollmentController.getEnrollments(req, res)
 );
 router.get("/people/:s_id/enrollments/all", (req, res) =>
-  enrollmentController.getEveryEnrollment(req, res)
+  enrollmentController.getEnrollmentsIncludingActiveAndDeleted(req, res)
 );
 router.get("/people/:s_id/enrollments/count", (req, res) =>
   enrollmentController.getEnrollmentCount(req, res)
 );
 router.get("/people/enrollments/full", (req, res) =>
-  enrollmentController.getEnrollmentsFull(req, res)
+  enrollmentController.getAboveLimitEnrollments(req, res)
 );
 router.get("/people/:s_id/enrollments/:id", (req, res) =>
   enrollmentController.getEnrollment(req, res)

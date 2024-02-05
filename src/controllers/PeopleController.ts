@@ -27,7 +27,10 @@ class PeopleController extends Controller {
     }
   }
 
-  async cancelStudentEnrollments(req: express.Request, res: express.Response) {
+  async cancelStudentAndEnrollments(
+    req: express.Request,
+    res: express.Response
+  ) {
     const { id } = req.params;
 
     try {
@@ -43,13 +46,15 @@ class PeopleController extends Controller {
           .status(406)
           .json({ message: "Can't remove classes from non student roles." });
       }
-      // await peopleServices.cancelStudentEnrollment(Number(id))
     } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
   }
 
-  async getAllWithoutConstraints(req: express.Request, res: express.Response) {
+  async getAllStudentsIncludingDeletedOrInactive(
+    _: express.Request,
+    res: express.Response
+  ) {
     try {
       const everyone = await peopleServices.getAllWithoutRestriction();
       return res.status(200).json(everyone);

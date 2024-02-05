@@ -58,7 +58,7 @@ class EnrollmentController extends Controller {
     }
   }
 
-  async getEnrollmentsFull(req: express.Request, res: express.Response) {
+  async getAboveLimitEnrollments(req: express.Request, res: express.Response) {
     const FULL_AMOUNT = 2;
     try {
       const coursesFull = await enrollmentServices.getAndCount({
@@ -79,7 +79,10 @@ class EnrollmentController extends Controller {
     }
   }
 
-  async getEveryEnrollment(req: express.Request, res: express.Response) {
+  async getEnrollmentsIncludingActiveAndDeleted(
+    req: express.Request,
+    res: express.Response
+  ) {
     const { s_id } = req.params;
     try {
       if (s_id) {
