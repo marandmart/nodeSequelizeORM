@@ -2,7 +2,7 @@
 
 Project created to study SQL CRUD operations through an ORM using NodeJS and Sequelize library.
 
-The project objectives were:
+The project objectives were::
 
 - Create a simple NodeJS API with express project applying MVC.
 - Create a MySQL server through a dockerfile.
